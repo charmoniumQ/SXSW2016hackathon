@@ -2,6 +2,10 @@
   color: #FFFFFF;
 }
 
+p {
+  color: white;
+}
+
 .jumbotron {
   background: url(img/mainphoto.jpg);
   height: 100%;
