@@ -12,7 +12,7 @@ if (Meteor.isClient) {
     	return Bids.find({accepted: false}, {sort: {price: -1}});
     },
     artistList: function(){
-    	return Meteor.users.find({}, {sort: {name: 1}});
+    	return Meteor.users.find({'profile.typeOfUser': "Performer"}, {sort: {name: 1}});
     }
   });
 
@@ -29,6 +29,7 @@ if (Meteor.isClient) {
         Bids.insert({
           venue: Meteor.userId(),
           artist: Session.get('artistName'),
+          artistId: Session.get('artistName'),
           artistRating: 4,
           date: dateVar,
           price: Number(bidVar),
