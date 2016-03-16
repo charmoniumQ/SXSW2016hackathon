@@ -1,23 +1,29 @@
 <template name="PerformerProfile">
-	<h1> { venueName } </h1>
+	<h1>{{performer.name}}</h1>
 	<div class="table-responsive">
 	<table class="table">
 	  	<tr>
 	    	<th>Name</th>
-	    	<td> { artistName } </td>
+	    	<td>{{performer.name}}</td>
 	  	</tr>
 	  	<tr>
 	    	<th>Location</th>
-	    	<td> { artistLocation } </td>
+	    	<td>{{performer.location}}</td>
 		</tr>
 	  	<tr>
 	    	<th>Genres</th>
-	    	<td> { artistGenres } </td>
+	    	<td>{{performer.genres}}</td>
 	  	</tr>
 	  	<tr>
 	    	<th>Rating</th>
-	    	<td> { artistRating } </td>
+	    	<td>{{performer.rating}}</td>
 	  	</tr>
 	</table>
 	</div>
+</template>
+
+<template name="PerformerBadge">
+  <ul>
+
+  </ul>
 </template>

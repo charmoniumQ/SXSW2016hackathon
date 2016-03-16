@@ -10,7 +10,7 @@ function userType() {
 	if (!Meteor.userId()) {
 		return USER_TYPES.NOT_LOGGED_IN;
 	} else {
-    if (Meteor.user().typeOfUser == 'Venue') {
+    if (Meteor.user().profile.typeOfUser == 'Venue') {
       return USER_TYPES.VENUE;
     } else {
       return USER_TYPES.PERFORMER;
