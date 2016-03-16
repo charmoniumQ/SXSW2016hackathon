@@ -19,7 +19,7 @@ if (Meteor.isServer) {
 	});
 }
 
-// meteor shell;
+//meteor shell;
 // Meteor.call('clearAll');
 // Meteor.call('clear', Meteor.users);
 // Meteor.users.find().fetch();
