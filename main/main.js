@@ -4,7 +4,7 @@ const USER_TYPES = {
 };
 
 function userType() {
-	if (! Meteor.userId()) {
+	if (!Meteor.userId()) {
 		return USER_TYPES.NOT_LOGGED_IN;
 	} else {
 		return USER_TYPES.LOGGED_IN; // TODO: differentiate between venues and artists
@@ -27,7 +27,7 @@ Router.map(function () {
 	});
 
 	this.route('PerformerHome', {
-		'path': 'performer_home'
+		'path': 'performer_home',
 		onBeforeAction: function () {
 			if (userType() !== USER_TYPES.LOGGED_IN) {
 				this.redirect('/');
