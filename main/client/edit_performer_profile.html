@@ -1,0 +1,14 @@
+<template name="EditPerformerProfile">
+	<form>
+		<label>Venue Name</label>
+		<input type="text" name="name" value="{{performer.name}}">
+		<label>Location</label>
+		<input type="text" name="location" value="{{performer.location}}">
+		<label>Genre(s)</label>
+		<input type="text" name="genres" value="{{performer.genres}}">
+		<label>Rating:</label>
+		<input type="text" value="{{performer.rating}}" disabled>
+		<label>Submit</label>
+		<input type="submit">
+	</form>
+</template>

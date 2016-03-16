@@ -1,4 +1,19 @@
+_ = lodash;
+const default_performer_profile = {
+	'name': '',
+	'location': '',
+	'genres': [''],
+	'rating': 2.5,
+	'typeOfUser': 'Performer'
+};
 
+const default_venue_profile = {
+	'name': '',
+	'location': '',
+	'genres': [''],
+	'rating': 2.5,
+	'typeOfUser': 'Venue'
+}
 
 if (Meteor.isClient) {
   // This code only runs on the client
@@ -17,15 +32,13 @@ if (Meteor.isClient) {
         var emailVar = event.target.registerEmail.value;
         var passwordVar = event.target.registerPassword.value;
         var typeVar = event.target.registerType.value;
-        console.log(typeVar);
 
-        Accounts.createUser({
-          email: emailVar,
-          password: passwordVar,
-          profile: {
-            typeOfUser: typeVar,
-          }
-    });
+		var default_profile = (typeVar == 'Venue' ? default_venue_profile : default_performer_profile);
+		Accounts.createUser({
+			email: emailVar,
+			password: passwordVar,
+			profile: default_profile
+		});
 
         console.log("Form submitted.");
     }

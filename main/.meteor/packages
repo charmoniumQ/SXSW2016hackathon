@@ -21,3 +21,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 accounts-ui
 accounts-password
 iron:router
+erasaur:meteor-lodash
+manuel:reactivearray
+http
