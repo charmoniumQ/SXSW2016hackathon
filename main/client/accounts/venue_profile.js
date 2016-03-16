@@ -1,16 +1,25 @@
 if(Meteor.is_server) {
 	Meter.users.allow({
-    'insert': function (userIdSource, userDest) {
-		return userIdSource == UserDest._id
-    }
-  });
+		'insert': function (userIdSource, userDest) {
+			return userIdSource == UserDest._id
+		}
+	});
 }
 
 if (Meteor.isClient) {
-	var profile = Meteor.user().profile;
-	profile.genres = profile.genres.join(', ');
 	Template.EditVenueProfile.helpers({
-		venue: profile
+		venue: function () {
+			var user = Meteor.user();
+			if (user) {
+				console.log(user);
+				var profile = user.profile;
+				profile.genres = profile.genres.join(', ');
+				profile.link = '/venue_profile/' + user._id;
+				return profile;
+			} else {
+				return undefined;
+			}
+		}
 	});
 	
 	Template.EditVenueProfile.events({

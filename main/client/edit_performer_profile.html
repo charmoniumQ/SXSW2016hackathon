@@ -1,4 +1,5 @@
 <template name="EditPerformerProfile">
+  {{#if performer}}
 	<form>
 		<label>Artist Name</label>
 		<input type="text" name="name" value="{{performer.name}}">
@@ -11,4 +12,8 @@
 		<label>Submit</label>
 		<input type="submit">
 	</form>
+  <p>
+	<a href="{{performer.link}}">View</a>
+  </p>
+	{{/if}}
 </template>

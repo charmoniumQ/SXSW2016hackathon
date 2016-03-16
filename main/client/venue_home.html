@@ -19,8 +19,13 @@
 					<td> {{ artist }} </td>
 					<td> {{ date }} </td>
 					<td> {{ price }} </td>
-					<td> { venueBid } </td>
-					<td> { venueBidder } </td>
+					{{#if bidsA.max_bid}}
+					<td> {{ bidsA.max_bid.venue.name }} </td>
+					<td> {{ bidsA.max_bid.price }} </td>
+					{{else}}
+					<td>None</td>
+					<td></td>
+					{{/if}}
 				</tr>
 			{{ /each }}
 		</tbody>
