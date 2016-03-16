@@ -7,10 +7,21 @@ if(Meteor.is_server) {
 }
 
 if (Meteor.isClient) {
-	var profile = Meteor.user().profile;
-	profile.genres = profile.genres.join(', ');
 	Template.EditPerformerProfile.helpers({
-		performer: profile
+		performer: function () {
+			var user = Meteor.user();
+			if (user) {
+				var profile = user.profile;
+				profile.genres = profile.genres.join(', ');
+				profile.link = '/performer_profile/' + user._id;
+				return profile;
+			} else {
+				return undefined;
+			}
+		},
+		bids: function () {
+
+		}
 	});
 	
 	Template.EditPerformerProfile.events({
@@ -29,7 +40,4 @@ if (Meteor.isClient) {
 			);
 		}
 	});
-
-
-
 }
