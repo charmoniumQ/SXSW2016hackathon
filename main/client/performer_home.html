@@ -1,3 +1,73 @@
-<template name="PerformerHome">
-  <h1>When performers are logged in</h1>
+<head>
+	<link rel="stylesheet" href="home.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<title>Bebop</title>
+</head>
+
+<body>
+	<h1> { artistName } </h1>
+	{{> searchBar }}
+
+ 	<div class="gigList">
+ 		<h2> See Accepted Gigs </h2>
+	{{> gigList }}
+	</div>
+
+ 	<div class="gigList">
+ 		<h2> Accept New Gigs </h2>
+	{{> gigList }}
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+
+<template name="sam">
+	<h1> { artistName } </h1>
+	{{> searchBar }}
+
+ 	<div class="gigList">
+ 		<h2> See Accepted Gigs </h2>
+	{{> gigList }}
+	</div>
+
+ 	<div class="gigList">
+ 		<h2> Accept New Gigs </h2>
+	{{> gigList }}
+	</div>
+</template>
+
+<template name="searchBar">
+	<input type="text" name="query">
+	<button>Search</button>
+</template>
+
+<template name="gigItem">
+	<tr>
+		<td> { venueCounter } </td>
+		<td> { venueName } </td>
+		<td> { venueGenres } </td>
+		<td> { artistBid } </td>
+		<td> { venueBidder } </td>
+	</tr>
+ </template>
+
+<template name="gigList">
+	<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th> # </th>
+				<th> Venue </th>
+				<th> Genres </th>
+				<th> Expected Pay </th>
+				<th> Expected Audience Size </th>
+			</tr>
+		</thead>
+		<tbody>
+			{ #each gig }
+				{{> gigItem}}
+			{ /each }
+		</tbody>
+	</table>
+	</div>
 </template>

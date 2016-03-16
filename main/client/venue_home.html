@@ -1,37 +1,62 @@
 <head>
-	<link rel="stylesheet" href="page_venue.css">
+	<link rel="stylesheet" href="home.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<title>Bebop</title>
 </head>
 
 <body>
 	<h1> { venueName } </h1>
-	{> searchBar }
+	{{> searchBar }}
+
+ 	<div class="bidList">
+ 		<h2> See Complete Bids </h2>
+	{{> bidList }}
+	</div>
 
  	<div class="bidList">
  		<h2> See Pending Bids </h2>
-	{> bidList }
+	{{> bidList }}
 	</div>
 
  	<div class="bidList">
  		<h2> Make New Bids </h2>
-	{> bidList }
+	{{> bidList }}
 	</div>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
+
+<template name="sam2">
+	<h1> { venueName } </h1>
+	{{> searchBar }}
+
+ 	<div class="bidList">
+ 		<h2> See Complete Bids </h2>
+	{{> bidList }}
+	</div>
+
+ 	<div class="bidList">
+ 		<h2> See Pending Bids </h2>
+	{{> bidList }}
+	</div>
+
+ 	<div class="bidList">
+ 		<h2> Make New Bids </h2>
+	{{> bidList }}
+	</div>
+</template>
 
 <template name="searchBar">
 	<input type="text" name="query">
 	<button>Search</button>
 </template>
 
-
 <template name="bidItem">
 	<tr>
 		<td> { artistCounter } </td>
 		<td> { artistName } </td>
 		<td> { artistGenres } </td>
+		<td> { artistRating } </td>
 		<td> { venueBid } </td>
 		<td> { venueBidder } </td>
 	</tr>
@@ -45,13 +70,14 @@
 				<th> # </th>
 				<th> Artist </th>
 				<th> Genres </th>
+				<th> Rating </th>
 				<th> Highest Bid </th>
 				<th> Highest Bidder </th>
 			</tr>
 		</thead>
 		<tbody>
 			{ #each bid }
-				{> bidItem}
+				{{> bidItem}}
 			{ /each }
 		</tbody>
 	</table>
