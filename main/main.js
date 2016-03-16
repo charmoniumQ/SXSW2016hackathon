@@ -50,6 +50,8 @@ Router.route('edit_performer_profile');
 
 Router.route('addbid');
 
+Router.route('search');
+
 function ensure_user(allowed_user_type) {
 	return function () {
 		if (userType() !== allowed_user_type) {
