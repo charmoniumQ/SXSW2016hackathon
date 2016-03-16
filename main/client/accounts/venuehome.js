@@ -4,6 +4,7 @@ function find_max_bid(bids) {
 	var max_bid = {'venue_id': 0, 'price': 0};
 	_.forEach(bids, function (bid) {
 		console.log(JSON.stringify(bid));
+		bid.artist = Meteor.users.findOne({_id: bid.artist_id});
 		if (max_bid.price < bid.price) {
 			max_bid = bid;
 		}
@@ -11,8 +12,8 @@ function find_max_bid(bids) {
 	if (max_bid.venue_id === 0) {
 		return undefined
 	} else {
-		max_bids.venue = Meteor.users.findOne({_id: max_bids.venue_id});
-		return max_bids;
+		max_bid.venue = Meteor.users.findOne({_id: max_bid.venue_id});
+		return max_bid;
 	}
 }
 
@@ -34,7 +35,12 @@ if (Meteor.isClient) {
     		return bids;
 		},
 		artistList: function(){
-    		return Meteor.users.find({'profile.typeOfUser': "Performer"}, {sort: {name: 1}});
+    		var artists = Meteor.users.find({'profile.typeOfUser': "Performer"}, {sort: {name: 1}});
+			// _.forEach(artists, function (artist) {
+			// 	var bids = Bids.find({artist_id: artist._id}).fetch();
+			// 	max_bid = find_max_bids()
+			// });
+			return artists;
 		}
 	});
 
@@ -50,8 +56,7 @@ if (Meteor.isClient) {
 			var bidVar = event.target.bid.value;
 			Bids.insert({
 				venue_id: Meteor.userId(),
-				artist: Session.get('artistName'),
-				artistId: Session.get('artistName'),
+				artist_id: Session.get('artistName'),
 				artistRating: 4,
 				date: dateVar,
 				price: Number(bidVar),

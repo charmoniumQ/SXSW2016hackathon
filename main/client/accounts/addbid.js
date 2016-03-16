@@ -9,8 +9,8 @@ if (Meteor.isClient) {
         var bidVar = event.target.bid.value;
 
         Bids.insert({
-          venue: Meteor.userId(),
-          artist: "Radiohead",
+          venue_id: Meteor.userId(),
+          artist_id: "Radiohead",
           artistRating: 4,
           date: dateVar,
           price: Number(bidVar),

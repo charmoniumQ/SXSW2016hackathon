@@ -5,7 +5,7 @@ const USER_TYPES = {
 };
 
 function userType() {
-	if (!Meteor.userId()) {
+	if (!Meteor.user()) {
 		return USER_TYPES.NOT_LOGGED_IN;
 	} else {
 		if (Meteor.user().profile.typeOfUser == 'Venue') {

@@ -16,15 +16,15 @@
 		<tbody>
 			{{ #each bidsA }}
 				<tr>
-					<td> {{ artist }} </td>
+					<td> {{ artist.profile.name }} </td>
 					<td> {{ date }} </td>
 					<td> {{ price }} </td>
 					{{#if bidsA.max_bid}}
-					<td> {{ bidsA.max_bid.venue.name }} </td>
-					<td> {{ bidsA.max_bid.price }} </td>
+						<td> {{ bidsA.max_bid.venue.profile.name }} </td>
+						<td> {{ bidsA.max_bid.price }} </td>
 					{{else}}
-					<td>None</td>
-					<td></td>
+						<td>None</td>
+						<td></td>
 					{{/if}}
 				</tr>
 			{{ /each }}
@@ -47,11 +47,16 @@
 		<tbody>
 			{{ #each bidsB }}
 				<tr>
-					<td> {{ artist }} </td>
+					<td> {{ artist.profile.name }} </td>
 					<td> {{ date }} </td>
 					<td> {{ price }} </td>
-					<td> { venueBid } </td>
-					<td> { venueBidder } </td>
+					{{#if bidsB.max_bid}}
+						<td> {{ bidsB.max_bid.venue.profile.name }} </td>
+						<td> {{ bidsB.max_bid.price }} </td>
+					{{else}}
+						<td>None</td>
+						<td></td>
+					{{/if}}
 				</tr>
 			{{ /each }}
 		</tbody>
@@ -73,11 +78,11 @@
 		<tbody>
 			{{ #each artistList }}
 				<tr data-name="{{_id}}">
-					<td> {{ _id }} </td>
+					<td> {{ artist.profile.name }} </td>
 					<td> Choose </td>
 					<td> Choose </td>
-					<td> { venueBid } </td>
-					<td> { venueBidder } </td>
+					<td> {{ artistList.max_bid.venue.profile.name }}</td>
+					<td> { artistList.max_bid.price } </td>
 				</tr>
 			{{ /each }}
 		</tbody>
