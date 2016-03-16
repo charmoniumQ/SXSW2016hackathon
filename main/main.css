@@ -7,7 +7,7 @@ p {
 }
 
 .jumbotron {
-  background: url(img/mainphoto.jpg);
+  /*background: url(img/mainphoto.jpg);*/
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -31,6 +31,7 @@ html, body {
 #add input {
   display: block;
 }
+
 
 /*not written*/
 /*body {
