@@ -19,8 +19,8 @@ if (Meteor.isClient) {
   Template.PerformerHome.events({
     'click #acceptVenues > tbody': function(event) {
       event.preventDefault();
-      var datum = $(event.target).closest('tr').data();
-      Bids.update({artist: Meteor.userId(),accepted: false,venue: datum.venue, date: datum.date, price: datum.price},{$set: {accepted: true}});
+      var hiddenBidId = $(event.target).closest('tr').data().hiddenID;
+      Bids.update({_id: hiddenBidId},{$set: {accepted: true}});
     }
   });
 }
