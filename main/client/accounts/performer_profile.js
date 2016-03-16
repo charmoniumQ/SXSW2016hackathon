@@ -14,6 +14,7 @@ if (Meteor.isClient) {
 				var profile = user.profile;
 				profile.genres = profile.genres.join(', ');
 				profile.link = '/performer_profile/' + user._id;
+				profile.artist_id = user._id;
 				return profile;
 			} else {
 				return undefined;
@@ -39,5 +40,14 @@ if (Meteor.isClient) {
 				{'$set': {'profile.name': nameVar, 'profile.location': locationVar, 'profile.genres': genresList}}
 			);
 		}
+	});
+
+	Template.PerformerProfile.events({
+  		'click #newBid': function(event) {
+			console.log('hi');
+  			event.preventDefault();
+  			Session.set('artistName', $('#artist_id').val());
+  			$('#addBidModal').modal('show');
+  		}
 	});
 }

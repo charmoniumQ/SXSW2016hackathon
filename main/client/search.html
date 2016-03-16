@@ -15,14 +15,11 @@
 			  {{/each}}
 			</tbody>
 		  </table>
-
 		</div>
-
 		<div class="col-md-6">
 			<table>
 			<thead>Search Artists</thead>
 			<tbody>
-				
 			     {{#each queries}}
 			     	{{> searchex}}
 			      {{/each}}
@@ -30,13 +27,11 @@
 			</tbody>
 			</table>
 		</div>
-
 	</div>
-
 </template>
 
 <template name="searchex">
 	<tr>
-	<li><span class="text">{{this}}</span></li>
+	<li><span class="text">{{{this}}}</span></li>
 	</tr>
 </template>
