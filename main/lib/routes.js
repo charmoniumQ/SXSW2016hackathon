@@ -68,7 +68,6 @@ function ensure_user(allowed_user_type) {
 	}
 }
 
-<<<<<<< HEAD
 // function redirectLogin(){
 // 	  if (!Meteor.userId()) {
 //     // if the user is not logged in, render the Login template

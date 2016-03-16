@@ -61,7 +61,7 @@ if (Meteor.isClient) {
 				artist_id: Session.get('artistName'),
 				artistRating: 4,
 				perfDate: perfDateVar,
-				bidDate: dateVar,
+				bidDate: bidDateVar,
 				price: Number(bidVar),
 				accepted: false
 			});
