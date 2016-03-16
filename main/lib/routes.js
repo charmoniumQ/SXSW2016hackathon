@@ -26,7 +26,15 @@ Router.route('/', function () {
 
 Router.route('venue_home');
 
-Router.route('venue_profile');
+Router.route('venue_profile/:_given_id', function () {
+  var profile = Meteor.users.findOne({_id: this.params._given_id}).profile
+  profile.genres = profile.genres.join(', ');
+  this.render('VenueProfile', {
+    data: {
+      venue: profile
+    }
+  });
+});
 
 Router.route('edit_venue_profile');
 
