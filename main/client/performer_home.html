@@ -27,13 +27,14 @@
 
 	 <div class="gigList table-responsive">
  	<h2> Pending Gigs </h2>
-	<table class="table">
+	<table id="acceptVenues" class="table">
 		<thead>
 			<tr>
 				<th> Venue </th>
 				<th> Date </th>
 				<th> Expected Pay </th>
 				<th> Expected Audience Size </th>
+				<th> ACCEPT </th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,6 +44,7 @@
 					<td> {{ date }} </td>
 					<td> { variable1 } </td>
 					<td> { variable2 } </td>
+					<td> <button type="button" class="btn btn-primary">Accept</button> </td>
 				</tr>
 			{ /each }
 		</tbody>

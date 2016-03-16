@@ -12,4 +12,11 @@ if (Meteor.isClient) {
     	return Bids.find({accepted: false}, {sort: {price: -1}});
     }
   });
+
+  Template.PerformerHome.events({
+    'click #acceptVenues > tbody > td > button': function(event) {
+      event.preventDefault();
+      console.log("Hello");
+    }
+  });
 }
