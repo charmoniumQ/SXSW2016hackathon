@@ -1,38 +1,13 @@
-<head>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="main.css">
-
-  <title>Agent007</title>
-
-
-</head>
- 
-<body>
-  <div class="jumbotron">
-     <div class="container">
-      <div class="col-md-8">
-          <h1 id="title">Agent007</h1>
-      </div>
-      <div class="col-md-4">
-
+<template name="login">
+	<div class="col-md-4">
 	 {{#if currentUser}}
         {{> dashboard}}
     {{else}}
         {{> register}}
-        {{> login}}
+        {{> loginform}}
     {{/if}}
-
-        </div>
     </div>
-  </div>
-
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-</body>
-
+</template>
 <template name="register">
     <form>
         <input type="email" name="registerEmail">
@@ -43,7 +18,7 @@
     </form>
 </template>
 
-<template name="login">
+<template name="loginform">
     <form>
         <input type="email" name="loginEmail">
         <input type="password" name="loginPassword">

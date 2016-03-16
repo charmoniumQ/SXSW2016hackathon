@@ -1,3 +1,51 @@
-<template name="performer_home">
-  <h1>When performers are logged in</h1>
+
+<template name="PerformerHome">
+	<h1> { artistName } </h1>
+	{{> searchBar }}
+
+ 	<div class="gigList">
+ 		<h2> See Accepted Gigs </h2>
+	{{> gigList }}
+	</div>
+
+ 	<div class="gigList">
+ 		<h2> Accept New Gigs </h2>
+	{{> gigList }}
+	</div>	
+</template>
+
+<template name="searchBar">
+	<input type="text" name="query">
+	<button>Search</button>
+</template>
+
+<template name="gigItem">
+	<tr>
+		<td> { venueCounter } </td>
+		<td> { venueName } </td>
+		<td> { venueGenres } </td>
+		<td> { artistBid } </td>
+		<td> { venueBidder } </td>
+	</tr>
+ </template>
+
+<template name="gigList">
+	<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th> # </th>
+				<th> Venue </th>
+				<th> Genres </th>
+				<th> Expected Pay </th>
+				<th> Expected Audience Size </th>
+			</tr>
+		</thead>
+		<tbody>
+			{ #each gig }
+				{{> gigItem}}
+			{ /each }
+		</tbody>
+	</table>
+	</div>
 </template>

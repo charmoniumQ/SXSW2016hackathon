@@ -15,11 +15,13 @@ if (Meteor.isClient) {
         var emailVar = event.target.registerEmail.value;
         var passwordVar = event.target.registerPassword.value;
         var typeVar = event.target.registerType.value;
+        console.log(typeVar);
 
         Accounts.createUser({
           email: emailVar,
           password: passwordVar,
-          type: typeVar
+          type: typeVar,
+          test: 'This should show up'
     });
 
         console.log("Form submitted.");
