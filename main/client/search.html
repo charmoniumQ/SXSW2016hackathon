@@ -1,0 +1,33 @@
+<template name="search">
+	<form class="new-search">
+		<input type="text" name="query">
+		<button>Search</button>
+	</form>
+	<div class="row">
+		<div class="col-md-6">
+
+
+		</div>
+
+		<div class="col-md-6">
+			<table>
+			<thead>Search Artists</thead>
+			<tbody>
+				
+			     {{#each queries}}
+			     	{{> searchex}}
+			      {{/each}}
+      			
+			</tbody>
+			</table>
+		</div>
+
+	</div>
+
+</template>
+
+<template name="searchex">
+	<tr>
+	<li><span class="text">{{this}}</span></li>
+	</tr>
+</template>

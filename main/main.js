@@ -34,6 +34,8 @@ Router.route('performer_home');
 
 Router.route('addbid');
 
+Router.route('search');
+
 function ensure_user(allowed_user_type) {
 	return function () {
 		if (userType() !== allowed_user_type) {
