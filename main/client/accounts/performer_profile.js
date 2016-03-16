@@ -9,11 +9,11 @@ if(Meteor.is_server) {
 if (Meteor.isClient) {
 	var profile = Meteor.user().profile;
 	profile.genres = profile.genres.join(', ');
-	Template.EditVenueProfile.helpers({
-		venue: profile
+	Template.EditPerformerProfile.helpers({
+		performer: profile
 	});
 	
-	Template.EditVenueProfile.events({
+	Template.EditPerformerProfile.events({
 		'submit form': function (event) {
 			event.preventDefault();
 			var nameVar = event.target.name.value;
@@ -29,4 +29,7 @@ if (Meteor.isClient) {
 			);
 		}
 	});
+
+
+
 }
