@@ -1,4 +1,5 @@
 <template name="EditVenueProfile">
+  {{#if venue}}
 	<form>
 		<label>Venue Name</label>
 		<input type="text" name="name" value="{{venue.name}}">
@@ -8,4 +9,6 @@
 		<input type="text" name="genres" value="{{venue.genres}}">
 		<input type="submit" value="Submit">
 	</form>
+	{{/if}}
+	<a href="{{venue.link}}">View</a>
 </template>

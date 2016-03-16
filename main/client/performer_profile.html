@@ -1,4 +1,5 @@
 <template name="PerformerProfile">
+	{{#if performer}}
 	<h1>{{performer.name}}</h1>
 	<div class="table-responsive">
 	<table class="table">
@@ -20,6 +21,7 @@
 	  	</tr>
 	</table>
 	</div>
+	{{/if}}
 </template>
 
 <template name="PerformerBadge">
