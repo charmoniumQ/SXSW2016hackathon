@@ -48,11 +48,11 @@ if (Meteor.isClient) {
 		})
 	});
 
-	Template.explore.events({
-		"submit .new-search": handle_suggest(function (queries) {
-			var j = 0;
-		})
-	})
+	// Template.explore.events({
+	// 	"submit .new-search": handle_suggest(function (queries) {
+	// 		var j = 0;
+	// 	})
+	// })
 
 	Template.search.helpers({
 		queries: function() {

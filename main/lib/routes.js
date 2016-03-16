@@ -68,6 +68,7 @@ function ensure_user(allowed_user_type) {
 	}
 }
 
+<<<<<<< HEAD
 // function redirectLogin(){
 // 	  if (!Meteor.userId()) {
 //     // if the user is not logged in, render the Login template
@@ -126,19 +127,6 @@ function ensure_user(allowed_user_type) {
 
 // // TODO: security and permissions
 
-
-// var goToHome = function() {
-//   if (Meteor.user()) {
-//   	if(Meteor.user().profile.typeOfUser == 'Venue')
-// 	    Router.go('venue_home');
-// 	else
-// 		Router.go('performer_home');
-//   } else {
-//     this.next();
-//   }
-// };
-
-// Router.onBeforeAction(goToHome);
 
 Router.onBeforeAction(ensure_user(USER_TYPES.PERFORMER), {
 	only: ['performer_home']
