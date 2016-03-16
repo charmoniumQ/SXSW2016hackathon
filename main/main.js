@@ -41,7 +41,7 @@ Router.route('performer_profile/:_given_id', function () {
 	profile.genres = profile.genres.join(', ');
 	this.render('PerformerProfile', {
 		data: {
-			performer: 
+			performer: profile
 		}
 	});
 });
