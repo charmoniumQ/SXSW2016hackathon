@@ -6,6 +6,7 @@ const USER_TYPES = {
 };
 
 function userType() {
+	console.log(Meteor.user());
 	if (!Meteor.user()) {
 		return USER_TYPES.NOT_LOGGED_IN;
 	} else {
