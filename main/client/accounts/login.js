@@ -1,3 +1,5 @@
+
+
 if (Meteor.isClient) {
   // This code only runs on the client
 
@@ -20,8 +22,9 @@ if (Meteor.isClient) {
         Accounts.createUser({
           email: emailVar,
           password: passwordVar,
-          type: typeVar,
-          test: 'This should show up'
+          profile: {
+            typeOfUser: typeVar,
+          }
     });
 
         console.log("Form submitted.");

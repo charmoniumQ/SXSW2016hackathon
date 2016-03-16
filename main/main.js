@@ -58,7 +58,11 @@ function userType() {
 	if (!Meteor.userId()) {
 		return USER_TYPES.NOT_LOGGED_IN;
 	} else {
-		return USER_TYPES.VENUE; // TODO: differentiate between venues and artists
+    if (Meteor.user().typeOfUser == 'Venue') {
+      return USER_TYPES.VENUE;
+    } else {
+      return USER_TYPES.PERFORMER;
+    }
 	}
 }
 
@@ -71,8 +75,6 @@ Router.configure({
 Router.route('/', function () {
   this.render('login');
 });
-        
-
 
 Router.route('venue_home');
 
