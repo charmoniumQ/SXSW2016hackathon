@@ -18,7 +18,6 @@ const default_venue_profile = {
 if (Meteor.isClient) {
   // This code only runs on the client
 
-
     Template.dashboard.events({
     'click .logout': function(event){
         event.preventDefault();
@@ -53,6 +52,7 @@ if (Meteor.isClient) {
         var passwordVar = event.target.loginPassword.value;
         Meteor.loginWithPassword(emailVar, passwordVar);
         console.log("Form submitted.");
+
     }
 });
 

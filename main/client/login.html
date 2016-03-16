@@ -1,6 +1,6 @@
 <template name="login">
-	<div class="col-md-4">
-	 {{#if currentUser}}
+    <div class="col-md-4">
+     {{#if currentUser}}
         {{> dashboard}}
     {{else}}
         {{> register}}
@@ -37,8 +37,8 @@
         <input type="password" name="loginPassword">
         <input type="submit" value="Login">
     </form>
-<!-- </div> -->
-    </div>
+</div>
+    <!-- </div> -->
 </template>
 
 <template name="dashboard">

@@ -66,6 +66,70 @@ function ensure_user(allowed_user_type) {
 	}
 }
 
+// function redirectLogin(){
+// 	  if (!Meteor.userId()) {
+//     // if the user is not logged in, render the Login template
+//     this.redirect('/');
+//   } elif {
+//     // otherwise don't hold up the rest of hooks or our route/action function
+//     // from running
+//     this.redirect('');
+
+//   } else {
+
+//   }
+// });
+// }
+
+
+// var mustBeSignedIn = function(pause) {
+//   if (!(Meteor.user() || Meteor.loggingIn())) {
+//     Router.go('login');
+//   } else {
+//     this.next();
+//   }
+// };
+
+// var goToDashboard = function() {
+//   if (Meteor.user()) {
+//     if(Meteor.user().profile.typeOfUser === 'Venue') {
+//     	Router.go('venue_home');
+//     } else {
+//     	Router.go('performer_home');
+//     }
+//   } else {
+//     this.next();
+//   }
+// };
+
+// Router.onBeforeAction(mustBeSignedIn, {except: ['venue_home','performer_home']});
+// Router.onBeforeAction(goToDashboard, {only: ['login']});
+
+
+Router.onBeforeAction(function () {
+  // all properties available in the route function
+  // are also available here such as this.params
+
+  if (!Meteor.userId()) {
+    // if the user is not logged in, render the Login template
+    this.render('login');
+  } else {
+    // otherwise don't hold up the rest of hooks or our route/action function
+    // from running
+    this.next();
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 // TODO: security and permissions
 
 Router.onBeforeAction(ensure_user(USER_TYPES.PERFORMER), {
