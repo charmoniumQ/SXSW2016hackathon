@@ -80,6 +80,8 @@ Router.route('venue_home');
 
 Router.route('performer_home');
 
+Router.route('addbid');
+
 function ensure_user(allowed_user_type) {
 	return function () {
 		if (userType() !== allowed_user_type) {
