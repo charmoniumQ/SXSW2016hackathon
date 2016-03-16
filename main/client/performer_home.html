@@ -1,5 +1,5 @@
 <template name="PerformerHome">
-	<h1> {{ artistName }} </h1>
+	<h1> {{ performerName }} </h1>
 
  	<div class="gigList table-responsive">
  	<h2> Accepted Gigs </h2>
@@ -13,14 +13,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			{ #each gigsA }
+			{{ #each gigsA }}
 				<tr>
-					<td> { venueName } </td>
+					<td> {{ venue }} </td>
 					<td> {{ date }} </td>
-					<td> { variable1 } </td>
-					<td> { variable2 } </td>
+					<td> {{ price }} </td>
+					<td> {{ variable2 }} </td>
 				</tr>
-			{ /each }
+			{{ /each }}
 		</tbody>
 	</table>
 	</div>
@@ -38,15 +38,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			{ #each gigsB }
-				<tr>
-					<td> { venueName } </td>
+			{{ #each gigsB }}
+				<tr data-venue="{{venue}}" data-date="{{date}}" data-price="{{price}}">
+					<td> {{ venue }} </td>
 					<td> {{ date }} </td>
-					<td> { variable1 } </td>
-					<td> { variable2 } </td>
-					<td> <button type="button" class="btn btn-primary">Accept</button> </td>
+					<td> {{ price }} </td>
+					<td> {{ variable2 }} </td>
+					<td> CLICK </td>
 				</tr>
-			{ /each }
+			{{ /each }}
 		</tbody>
 	</table>
 	</div>
