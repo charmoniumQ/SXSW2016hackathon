@@ -1,56 +1,106 @@
 <template name="VenueHome">
-	<!-- <h1> { venueName } </h1>
-	{{> searchBar }}
+	<h1> {{ venueName }} </h1>
 
- 	<div class="bidList">
- 		<h2> See Complete Bids </h2>
-	{{> bidList }}
-	</div>
-
- 	<div class="bidList">
- 		<h2> See Pending Bids </h2>
-	{{> bidList }}
-	</div>
-
- 	<div class="bidList">
- 		<h2> Make New Bids </h2>
-	{{> bidList }}
-	</div> -->
-	<h1>HELLLLLLLLOOOOOO</h1>
-</template>
-
-<template name="searchBar">
-	<input type="text" name="query">
-	<button>Search</button>
-</template>
-
-<template name="bidItem">
-	<tr>
-		<td> { artistName } </td>
-		<td> { artistGenres } </td>
-		<td> { artistRating } </td>
-		<td> { venueBid } </td>
-		<td> { venueBidder } </td>
-	</tr>
- </template>
-
-<template name="bidList">
-	<div class="table-responsive">
+ 	<div class="bidList table-responsive">
+ 	<h2> Finished Bids </h2>
 	<table class="table">
 		<thead>
 			<tr>
 				<th> Artist </th>
-				<th> Genres </th>
-				<th> Rating </th>
+				<th> Date </th>
+				<th> Your Bid </th>
 				<th> Highest Bid </th>
 				<th> Highest Bidder </th>
 			</tr>
 		</thead>
 		<tbody>
-			{ #each bid }
-				{{> bidItem}}
-			{ /each }
+			{{ #each bidsA }}
+				<tr>
+					<td> {{ artist }} </td>
+					<td> {{ date }} </td>
+					<td> {{ price }} </td>
+					<td> { venueBid } </td>
+					<td> { venueBidder } </td>
+				</tr>
+			{{ /each }}
 		</tbody>
 	</table>
 	</div>
+
+ 	<div class="bidList table-responsive">
+ 	<h2> Pending Bids </h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th> Artist </th>
+				<th> Date </th>
+				<th> Your Bid </th>
+				<th> Highest Bid </th>
+				<th> Highest Bidder </th>
+			</tr>
+		</thead>
+		<tbody>
+			{{ #each bidsB }}
+				<tr>
+					<td> {{ artist }} </td>
+					<td> {{ date }} </td>
+					<td> {{ price }} </td>
+					<td> { venueBid } </td>
+					<td> { venueBidder } </td>
+				</tr>
+			{{ /each }}
+		</tbody>
+	</table>
+	</div>
+
+	 <div class="bidList table-responsive">
+ 	<h2> Make New Bids </h2>
+	<table id="newBids" class="table">
+		<thead>
+			<tr>
+				<th> Artist </th>
+				<th> Date </th>
+				<th> Your Bid </th>
+				<th> Highest Bid </th>
+				<th> Highest Bidder </th>
+			</tr>
+		</thead>
+		<tbody>
+			{{ #each artistList }}
+				<tr data-name="{{_id}}">
+					<td> {{ _id }} </td>
+					<td> Choose </td>
+					<td> Choose </td>
+					<td> { venueBid } </td>
+					<td> { venueBidder } </td>
+				</tr>
+			{{ /each }}
+		</tbody>
+	</table>
+	</div>
+	{{> addBidModalTemplate}}
+</template>
+
+<template name="addBidModalTemplate">
+  <div class="modal fade in" id="addBidModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Bid</h4>
+        </div>
+        <div class="modal-body">
+			<form id="add">
+				<label>Date</label>
+				<input type="date" name="date">
+				<label>Bid</label>
+				<input type="number" name="bid">
+				<input id="quitModal" type="submit" value="Place Bid">
+			</form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

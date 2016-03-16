@@ -10,8 +10,11 @@ if (Meteor.isClient) {
 
         Bids.insert({
           venue: Meteor.userId(),
+          artist: "Radiohead",
+          artistRating: 4,
           date: dateVar,
-          price: bidVar
+          price: Number(bidVar),
+          accepted: false
         });
         console.log("Submitted");
       }
