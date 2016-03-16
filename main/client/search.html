@@ -5,7 +5,16 @@
 	</form>
 	<div class="row">
 		<div class="col-md-6">
-
+		  <table>
+			<thead>Suggested Artists</thead>
+			<tbody>
+			  {{#each suggested}}
+			  <tr>
+				<li>{{this}}</li>
+			  </tr>
+			  {{/each}}
+			</tbody>
+		  </table>
 
 		</div>
 
