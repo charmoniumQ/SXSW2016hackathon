@@ -1,23 +1,37 @@
-if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
+const USER_TYPES = {
+	NOT_LOGGED_IN: 0,
+	LOGGED_IN: 1
+};
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+function userType() {
+	if (! Meteor.userId()) {
+		return USER_TYPES.NOT_LOGGED_IN;
+	} else {
+		return USER_TYPES.LOGGED_IN; // TODO: differentiate between venues and artists
+	}
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
+Router.map(function () {
+
+	this.route('Login', {
+		'path': '/'
+	});
+
+	this.route('VenueHome', {
+		'path': 'venue_home',
+		onBeforeAction: function () {
+			if (userType() !== USER_TYPES.LOGGED_IN) {
+				this.redirect('/');
+			}
+		}
+	});
+
+	this.route('PerformerHome', {
+		'path': 'performer_home'
+		onBeforeAction: function () {
+			if (userType() !== USER_TYPES.LOGGED_IN) {
+				this.redirect('/');
+			}
+		}
+	});
+});
