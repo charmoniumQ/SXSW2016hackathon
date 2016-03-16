@@ -1,5 +1,3 @@
-Bids = new Mongo.Collection('bids');
-
 const USER_TYPES = {
 	NOT_LOGGED_IN: 0,
 	VENUE: 1,
@@ -22,23 +20,13 @@ Router.configure({
   layoutTemplate: 'main_layout'
 });
 
-
-
 Router.route('/', function () {
   this.render('login');
 });
 
 Router.route('venue_home');
 
-Router.route('venue_profile/:_given_id', function () {
-  var profile = Meteor.users.findOne({_id: this.params._given_id}).profile
-  profile.genres = profile.genres.join(', ');
-  this.render('VenueProfile', {
-    data: {
-      venue: profile
-    }
-  });
-});
+Router.route('venue_profile');
 
 Router.route('edit_venue_profile');
 
@@ -79,4 +67,3 @@ Router.onBeforeAction(ensure_user(USER_TYPES.PERFORMER), {
 Router.onBeforeAction(ensure_user(USER_TYPES.VENUE), {
   only: ['venue_home']
 });
-

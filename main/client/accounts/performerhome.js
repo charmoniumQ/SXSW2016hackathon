@@ -1,11 +1,15 @@
 if (Meteor.isClient) {
   // This code only runs on the client
 
-  Template.Performerhome.helpers({
-    gigList: function(event){
-        event.preventDefault();
-       return Bids.find({}, {sort: {price: -1}});
-        console.log("Nice");
-      }
+  Template.PerformerHome.helpers({
+  	venueName: function() {
+  		return Meteor.user().emails[0].address;
+  	},
+  	gigsA: function(){
+    	return Bids.find({accepted: true}, {sort: {price: -1}});
+    },
+    gigsB: function(){
+    	return Bids.find({accepted: false}, {sort: {price: -1}});
+    }
   });
 }

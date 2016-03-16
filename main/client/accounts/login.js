@@ -33,8 +33,8 @@ if (Meteor.isClient) {
         var passwordVar = event.target.registerPassword.value;
         var typeVar = event.target.registerType.value;
 
-		var default_profile = (typeVar == 'venue' ? default_venue_profile : default_performer_profile);
-        Accounts.createUser({
+		var default_profile = (typeVar == 'Venue' ? default_venue_profile : default_performer_profile);
+		Accounts.createUser({
 			email: emailVar,
 			password: passwordVar,
 			profile: default_profile

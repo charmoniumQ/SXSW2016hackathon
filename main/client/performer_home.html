@@ -1,55 +1,51 @@
-
 <template name="PerformerHome">
-	<h1> { artistName } </h1>
-	{{> searchBar }}
+	<h1> {{ artistName }} </h1>
 
- 	<div class="gigList">
- 		<h2> See Accepted Gigs </h2>
-	{{> gigList }}
-	</div>
-
-	<br>		
-
- 	<div class="gigList">
- 		<h2> Accept New Gigs </h2>
-	{{> gigList }}
-	</div>	
-</template>
-
-<template name="searchBar">
-	<input type="text" name="query">
-	<button>Search</button>
-</template>
-
-<template name="gigItem">
-	<tr>
-		<td> { venueCounter } </td>
-		<td> { venueName } </td>
-		<td> { venueGenres } </td>
-		<td> { artistBid } </td>
-		<td> { venueBidder } </td>
-	</tr>
- </template>
-
-<template name="gigList">
-	<div>
-	<div class="table-responsive">
+ 	<div class="gigList table-responsive">
+ 	<h2> Accepted Gigs </h2>
 	<table class="table">
 		<thead>
 			<tr>
-				<th> # </th>
 				<th> Venue </th>
-				<th> Genres </th>
+				<th> Date </th>
 				<th> Expected Pay </th>
 				<th> Expected Audience Size </th>
 			</tr>
 		</thead>
 		<tbody>
-			{ #each gig }
-				{{> gigItem}}
+			{ #each gigsA }
+				<tr>
+					<td> { venueName } </td>
+					<td> {{ date }} </td>
+					<td> { variable1 } </td>
+					<td> { variable2 } </td>
+				</tr>
 			{ /each }
 		</tbody>
 	</table>
 	</div>
-</div>
+
+	 <div class="gigList table-responsive">
+ 	<h2> Pending Gigs </h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th> Venue </th>
+				<th> Date </th>
+				<th> Expected Pay </th>
+				<th> Expected Audience Size </th>
+			</tr>
+		</thead>
+		<tbody>
+			{ #each gigsB }
+				<tr>
+					<td> { venueName } </td>
+					<td> {{ date }} </td>
+					<td> { variable1 } </td>
+					<td> { variable2 } </td>
+				</tr>
+			{ /each }
+		</tbody>
+	</table>
+	</div>
 </template>
