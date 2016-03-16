@@ -19,13 +19,14 @@
 	    	<th>Rating</th>
 	    	<td>{{performer.rating}}</td>
 	  	</tr>
+		<input type="hidden" id="artist_id" value="{{performer.artist_id}}">
 	</table>
 	</div>
+		{{#if venueUser}}
+		<div>
+		  <h1 id="newBid">Bid!</h1>
+			{{> addBidModalTemplate}}
+		</div>
+		{{/if}}	
 	{{/if}}
-</template>
-
-<template name="PerformerBadge">
-  <ul>
-
-  </ul>
 </template>

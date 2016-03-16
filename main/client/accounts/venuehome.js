@@ -35,11 +35,8 @@ if (Meteor.isClient) {
     		return bids;
 		},
 		artistList: function(){
-    		var artists = Meteor.users.find({'profile.typeOfUser': "Performer"}, {sort: {name: 1}});
-			// _.forEach(artists, function (artist) {
-			// 	var bids = Bids.find({artist_id: artist._id}).fetch();
-			// 	max_bid = find_max_bids()
-			// });
+    		var artists = Meteor.users.find({'profile.typeOfUser': "Performer"}, {sort: {name: 1}}).fetch();
+
 			return artists;
 		}
 	});
@@ -49,20 +46,26 @@ if (Meteor.isClient) {
   			event.preventDefault();
   			Session.set('artistName', $(event.target).closest('tr').data().name);
   			$('#addBidModal').modal('show');
-  		},
+  		}
+
+	});
+
+	Template.addBidModalTemplate.events({
   		'submit form': function(event){
 			event.preventDefault();
-			var dateVar = event.target.date.value;
+			var bidDateVar = event.target.bidDate.value;
+			var perfDateVar = event.target.perfDate.value;
 			var bidVar = event.target.bid.value;
 			Bids.insert({
 				venue_id: Meteor.userId(),
 				artist_id: Session.get('artistName'),
 				artistRating: 4,
-				date: dateVar,
+				perfDate: perfDateVar,
+				bidDate: dateVar,
 				price: Number(bidVar),
 				accepted: false
 			});
-			console.log("Submitted");
+			$('#addBidModal').modal('hide');
 		}
 	});
 }

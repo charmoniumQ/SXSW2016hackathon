@@ -1,7 +1,8 @@
 const USER_TYPES = {
 	NOT_LOGGED_IN: 0,
 	VENUE: 1,
-	PERFORMER: 2
+	PERFORMER: 2,
+	AUDIPHILE: 3
 };
 
 function userType() {
@@ -42,6 +43,7 @@ Router.route('performer_home');
 
 Router.route('performer_profile/:_given_id', function () {
 	var profile = Meteor.users.findOne({_id: this.params._given_id}).profile
+	profile.artist_id = this.params._given_id;
 	profile.genres = profile.genres.join(', ');
 	this.render('PerformerProfile', {
 		data: {

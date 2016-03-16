@@ -1,13 +1,16 @@
 <template name="VenueHome">
 	<h1> {{ venueName }} </h1>
 
+	{{> search }}
+	
  	<div class="bidList table-responsive">
  	<h2> Finished Bids </h2>
 	<table class="table">
 		<thead>
 			<tr>
 				<th> Artist </th>
-				<th> Date </th>
+				<th> Bid Date </th>
+				<th> Performance Date </th>
 				<th> Your Bid </th>
 				<th> Highest Bid </th>
 				<th> Highest Bidder </th>
@@ -17,7 +20,8 @@
 			{{ #each bidsA }}
 				<tr>
 					<td> {{ artist.profile.name }} </td>
-					<td> {{ date }} </td>
+					<td> {{ bidDate }} </td>
+					<td> {{ perfDate }} </td>
 					<td> {{ price }} </td>
 					{{#if bidsA.max_bid}}
 						<td> {{ bidsA.max_bid.venue.profile.name }} </td>
@@ -38,7 +42,8 @@
 		<thead>
 			<tr>
 				<th> Artist </th>
-				<th> Date </th>
+				<th> Bid Date </th>
+				<th> Performance Date </th>
 				<th> Your Bid </th>
 				<th> Highest Bid </th>
 				<th> Highest Bidder </th>
@@ -48,7 +53,8 @@
 			{{ #each bidsB }}
 				<tr>
 					<td> {{ artist.profile.name }} </td>
-					<td> {{ date }} </td>
+					<td> {{ bidDate }} </td>
+					<td> {{ perfDate }} </td>
 					<td> {{ price }} </td>
 					{{#if bidsB.max_bid}}
 						<td> {{ bidsB.max_bid.venue.profile.name }} </td>
@@ -69,20 +75,20 @@
 		<thead>
 			<tr>
 				<th> Artist </th>
-				<th> Date </th>
-				<th> Your Bid </th>
-				<th> Highest Bid </th>
-				<th> Highest Bidder </th>
+				<!-- <th> Date </th> -->
+				<!-- <th> Your Bid </th> -->
+				<!-- <th> Highest Bid </th> -->
+				<!-- <th> Highest Bidder </th> -->
 			</tr>
 		</thead>
 		<tbody>
 			{{ #each artistList }}
 				<tr data-name="{{_id}}">
-					<td> {{ artist.profile.name }} </td>
-					<td> Choose </td>
-					<td> Choose </td>
-					<td> {{ artistList.max_bid.venue.profile.name }}</td>
-					<td> { artistList.max_bid.price } </td>
+					<td> {{ this.profile.name }} </td>
+					<!-- <td> Choose </td> -->
+					<!-- <td> Choose </td> -->
+					<!-- <td> {{ artistList.max_bid.venue.profile.name }}</td> -->
+					<!-- <td> { artistList.max_bid.price } </td> -->
 				</tr>
 			{{ /each }}
 		</tbody>
@@ -100,9 +106,11 @@
         </div>
         <div class="modal-body">
 			<form id="add">
-				<label>Date</label>
-				<input type="date" name="date">
-				<label>Bid</label>
+				<label>Bid Date</label>
+				<input type="date" name="bidDate">
+				<label>Performance Date</label>
+				<input type="date" name="perfDate">
+				<label>Bid ammount</label>
 				<input type="number" name="bid">
 				<input id="quitModal" type="submit" value="Place Bid">
 			</form>
