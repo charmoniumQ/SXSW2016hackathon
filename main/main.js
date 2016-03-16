@@ -48,38 +48,44 @@ if (Meteor.isClient) {
 
 const USER_TYPES = {
 	NOT_LOGGED_IN: 0,
-	LOGGED_IN: 1
+	VENUE: 1,
+	PERFORMER: 2
 };
 
 function userType() {
 	if (!Meteor.userId()) {
 		return USER_TYPES.NOT_LOGGED_IN;
 	} else {
-		return USER_TYPES.LOGGED_IN; // TODO: differentiate between venues and artists
+		return USER_TYPES.VENUE; // TODO: differentiate between venues and artists
 	}
 }
 
-Router.map(function () {
+Router.configure({
+  layoutTemplate: 'main_layout'
+});
 
-	this.route('Login', {
-		'path': '/'
-	});
+Router.route('/', function () {
+	this.render('login');
+});
 
-	this.route('VenueHome', {
-		'path': 'venue_home',
-		onBeforeAction: function () {
-			if (userType() !== USER_TYPES.LOGGED_IN) {
-				this.redirect('/');
-			}
+Router.route('venue_home');
+
+Router.route('performer_home');
+
+function ensure_user(allowed_user_type) {
+	return function () {
+		if (userType() !== allowed_user_type) {
+			this.render('/'); // don't do the next thing
+		} else {
+			this.next(); // do the next thing
 		}
-	});
+	}
+}
 
-	this.route('PerformerHome', {
-		'path': 'performer_home',
-		onBeforeAction: function () {
-			if (userType() !== USER_TYPES.LOGGED_IN) {
-				this.redirect('/');
-			}
-		}
-	});
+Router.onBeforeAction(ensure_user(USER_TYPES.PERFORMER), {
+	only: ['performer_home']
+});
+
+Router.onBeforeAction(ensure_user(USER_TYPES.VENUE), {
+  only: ['venue_home']
 });

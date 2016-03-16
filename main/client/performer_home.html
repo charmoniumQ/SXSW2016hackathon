@@ -1,10 +1,4 @@
-<head>
-	<link rel="stylesheet" href="home.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<title>Bebop</title>
-</head>
-
-<body>
+<template name="performerhome">
 	<h1> { artistName } </h1>
 	{{> searchBar }}
 
@@ -16,24 +10,7 @@
  	<div class="gigList">
  		<h2> Accept New Gigs </h2>
 	{{> gigList }}
-	</div>
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</body>
-
-<template name="sam">
-	<h1> { artistName } </h1>
-	{{> searchBar }}
-
- 	<div class="gigList">
- 		<h2> See Accepted Gigs </h2>
-	{{> gigList }}
-	</div>
-
- 	<div class="gigList">
- 		<h2> Accept New Gigs </h2>
-	{{> gigList }}
-	</div>
+	</div>	
 </template>
 
 <template name="searchBar">
