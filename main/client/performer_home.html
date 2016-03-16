@@ -38,12 +38,12 @@
 		</thead>
 		<tbody>
 			{{ #each gigsB }}
-				<tr data-hiddenID="{{_id}}">
+				<tr data-hiddenid="{{_id}}">
 					<td> {{ venue }} </td>
 					<td> {{ date }} </td>
 					<td> {{ price }} </td>
 					<td> {{ variable2 }} </td>
-					<td> CLICK </td>
+					<td id="acceptVenues"> ACCEPT</td>
 				</tr>
 			{{ /each }}
 		</tbody>
