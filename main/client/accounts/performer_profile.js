@@ -42,6 +42,12 @@ if (Meteor.isClient) {
 		}
 	});
 
+	Template.PerformerProfile.helpers({
+		'venueUser': function () {
+			return Meteor.user().profile.typeOfUser === 'Venue';
+		}
+	});
+
 	Template.PerformerProfile.events({
   		'click #newBid': function(event) {
 			console.log('hi');
